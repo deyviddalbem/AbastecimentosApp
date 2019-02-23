@@ -1,5 +1,7 @@
 package br.edu.ifro.vilhena.abastecimentosv2;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -22,6 +24,8 @@ import br.edu.ifro.vilhena.abastecimentosv2.Model.Combustivel;
 
 public class ListarActivity extends AppCompatActivity {
     private ListView listar;
+    private FloatingActionButton btnAdd;
+    private FloatingActionButton btnListarCombustiveis;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,14 +34,18 @@ public class ListarActivity extends AppCompatActivity {
 
 
         listar = findViewById(R.id.listaAbastecimentos);
-        Combustivel combustivel = new Combustivel();
-        combustivel.setId(1);
-        combustivel.setTipo("de Foguete");
-        CombustivelDAO combustivelDAO = new CombustivelDAO(this);
-        combustivelDAO.inserir(combustivel);
-        atualizarLista();
+        btnAdd = findViewById(R.id.addAbastecimento);
+        btnListarCombustiveis = findViewById(R.id.activityListarBtnListarCombustiveis);
 
-        registerForContextMenu(listar);
+
+        btnListarCombustiveis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListarActivity.this,ListarCombustivelActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
     }
 
