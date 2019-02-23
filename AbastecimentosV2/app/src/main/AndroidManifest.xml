@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ResumoActivity"></activity>
-        <activity android:name=".AbastecimentoActivity" >
+        <activity android:name=".AbastecimentoActivity" ></activity>
         <activity android:name=".ListarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
