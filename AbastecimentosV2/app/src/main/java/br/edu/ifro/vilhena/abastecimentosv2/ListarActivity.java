@@ -26,7 +26,7 @@ public class ListarActivity extends AppCompatActivity {
 
         CombustivelDAO combustivelDAO = new CombustivelDAO(this);
         Combustivel combustivel = new Combustivel();
-        combustivel.setTipo("Gasolina Aditivada");
+        //combustivel.setTipo("Gasolina Aditivada");
 
         combustivelDAO.inserir(combustivel);
         //combustivelDAO.deletarTudo();
@@ -35,6 +35,7 @@ public class ListarActivity extends AppCompatActivity {
         List<Combustivel> combustivelList = combustivelDAO.listarTodos();
         ArrayAdapter<Combustivel> combustivelArrayAdapter = new ArrayAdapter<Combustivel>(this,android.R.layout.simple_list_item_1,combustivelList);
         listar.setAdapter(combustivelArrayAdapter);
+
 
     }
 }
