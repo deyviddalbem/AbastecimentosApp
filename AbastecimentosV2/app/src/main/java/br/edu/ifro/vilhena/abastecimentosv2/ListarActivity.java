@@ -46,6 +46,24 @@ public class ListarActivity extends AppCompatActivity {
             }
         });
 
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListarActivity.this, AbastecimentoActivity.class);
+                startActivity(intent
+
+
+
+
+
+
+
+
+
+                );
+            }
+        });
+
 
     }
 
