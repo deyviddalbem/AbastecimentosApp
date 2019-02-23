@@ -11,6 +11,15 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+import android.widget.ListView;
+
+import java.util.List;
+
+import br.edu.ifro.vilhena.abastecimentosv2.DAO.AbastecimentoDAO;
+import br.edu.ifro.vilhena.abastecimentosv2.DAO.CombustivelDAO;
+import br.edu.ifro.vilhena.abastecimentosv2.Model.Abastecimento;
+import br.edu.ifro.vilhena.abastecimentosv2.Model.Combustivel;
+
 
 public class AbastecimentoActivity extends AppCompatActivity {
     private Spinner spinner;
@@ -21,6 +30,9 @@ public class AbastecimentoActivity extends AppCompatActivity {
     private TextInputEditText quantidadeLitros;
     private TextInputEditText total;
     private TextInputEditText data;
+
+
+    private ListView listarAbastecimento;
 
 
     @Override
@@ -48,6 +60,27 @@ public class AbastecimentoActivity extends AppCompatActivity {
                 Toast.makeText(AbastecimentoActivity.this,"Teste",Toast.LENGTH_SHORT).show();
             }
         });
+
+        listarAbastecimento = findViewById(R.id.listaAbastecimentos);
+
+
+        //AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
+        //Abastecimento abastecimento = new Abastecimento();
+        //abastecimento.setNomePosto("Posto Cidade");
+        //abastecimento.getCombustivel().setTipo("gasolina");
+        //abastecimento.setQuilometragem(5789);
+        //abastecimento.setQuantLitros(10);
+        //abastecimento.setValorLitro(2.50);
+        //abastecimento.setTotal(abastecimento.getQuantLitros() * abastecimento.getValorLitro());
+        //abastecimento.setData();
+        //abastecimentoDAO.inserir(abastecimento);
+        //abastecimentoDAO.close();
+
+
+
+        //List<Abastecimento> abastecimentoLista = abastecimentoDAO.listaAbastecimentos();
+        //ArrayAdapter<Abastecimento> combustivelArrayAdapter = new ArrayAdapter<Abastecimento>(this,android.R.layout.simple_list_item_1,abastecimentoLista);
+        //listarAbastecimento.setAdapter(combustivelArrayAdapter);
 
     }
 
