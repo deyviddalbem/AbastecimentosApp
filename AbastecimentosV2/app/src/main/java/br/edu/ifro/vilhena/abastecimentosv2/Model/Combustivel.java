@@ -1,6 +1,8 @@
 package br.edu.ifro.vilhena.abastecimentosv2.Model;
 
-public class Combustivel {
+import java.io.Serializable;
+
+public class Combustivel implements Serializable {
 
     private int id;
     private String tipo;

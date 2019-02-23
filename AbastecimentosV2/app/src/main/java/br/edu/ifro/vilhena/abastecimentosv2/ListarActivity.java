@@ -32,22 +32,12 @@ public class ListarActivity extends AppCompatActivity {
         listar = findViewById(R.id.listaAbastecimentos);
         Combustivel combustivel = new Combustivel();
         combustivel.setId(1);
-        Abastecimento teste = new Abastecimento();
-        teste.setNomePosto("Tafarel");
-        teste.setQuantLitros(15.3);
-        teste.setQuilometragem((float) 152.6);
-        teste.setValorLitro(3.49);
-        teste.setCombustivel(combustivel);
-        teste.setTotal(45.56);
-
-
-
-
-
-
-        AbastecimentoDAO testeDAO = new AbastecimentoDAO(this);
-        testeDAO.inserir(teste);
+        combustivel.setTipo("de Foguete");
+        CombustivelDAO combustivelDAO = new CombustivelDAO(this);
+        combustivelDAO.inserir(combustivel);
         atualizarLista();
+
+        registerForContextMenu(listar);
 
     }
 
@@ -71,10 +61,10 @@ public class ListarActivity extends AppCompatActivity {
 
     public void atualizarLista(){
 
-        AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(this);
-        List<Abastecimento> abastecimentos = abastecimentoDAO.listaAbastecimentos();
+       CombustivelDAO combustivelDAO = new CombustivelDAO(this);
+        List<Combustivel> abastecimentos = combustivelDAO.listarTodos();
 
-        ArrayAdapter<Abastecimento> abastecimentosArrayAdapter = new ArrayAdapter<Abastecimento>(this,android.R.layout.simple_list_item_1,abastecimentos);
+        ArrayAdapter<Combustivel> abastecimentosArrayAdapter = new ArrayAdapter<Combustivel>(this,android.R.layout.simple_list_item_1,abastecimentos);
         listar.setAdapter(abastecimentosArrayAdapter);
         Toast.makeText(this,"Chegou no final", Toast.LENGTH_LONG).show();
 
