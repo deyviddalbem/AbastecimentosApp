@@ -20,12 +20,5 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/add"/>
 
-    <Button
-        android:id="@+id/btnAddTelaDeCadastroCombustivel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Cadastrar Combustivel"
-        android:textSize="16dp"
-        android:background="@color/colorAccent"
-        android:textColorHint="@android:color/white"/>
+ 
 </RelativeLayout>

@@ -20,7 +20,7 @@ import br.edu.ifro.vilhena.abastecimentosv2.Model.Combustivel;
 public class ListarCombustivelActivity extends AppCompatActivity {
     private ListView listaCombustiveis;
     private FloatingActionButton btnAdd;
-    private Button btnAddTelaDeCadastroCombustivel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class ListarCombustivelActivity extends AppCompatActivity {
 
         listaCombustiveis = findViewById(R.id.listViewCombustiveis);
         btnAdd = findViewById(R.id.combustivelActivityAddButton);
-        btnAddTelaDeCadastroCombustivel = findViewById(R.id.btnAddTelaDeCadastroCombustivel);
+
         atualizarLista();
 
         registerForContextMenu(listaCombustiveis);
@@ -54,15 +54,7 @@ public class ListarCombustivelActivity extends AppCompatActivity {
             }
         });
 
-        //transita para a activity de cadastro de combustivel
-        btnAddTelaDeCadastroCombustivel.setOnClickListener(new View.OnClickListener(){
 
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ListarCombustivelActivity.this,CombustivelActivity.class);
-                startActivity(intent);
-            }
-        });
 
     }
 
