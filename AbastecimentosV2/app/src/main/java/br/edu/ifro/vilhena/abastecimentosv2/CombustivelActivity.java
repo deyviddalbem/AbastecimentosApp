@@ -34,6 +34,7 @@ public class CombustivelActivity extends AppCompatActivity {
         } else{
             combustivel = new Combustivel();
             btnSalvar.setText("SALVAR");
+
         }
 
         if(combustivel != null){
@@ -49,11 +50,12 @@ public class CombustivelActivity extends AppCompatActivity {
 
                 if(combustivel.getId() != 0){
                     combustivelDAO.alterar(combustivel);
+                    Toast.makeText(CombustivelActivity.this, "Combustivel alterado com sucesso!",Toast.LENGTH_SHORT).show();
                 } else {
                     combustivelDAO.inserir(combustivel);
+                    Toast.makeText(CombustivelActivity.this,"Tipo de combustível salvo", Toast.LENGTH_SHORT).show();
                 }
                 combustivelDAO.close();
-                Toast.makeText(CombustivelActivity.this,"Tipo de combustível salvo", Toast.LENGTH_LONG);
                 finish();
             }
         });

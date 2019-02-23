@@ -8,7 +8,8 @@
     <ListView
         android:id="@+id/listViewCombustiveis"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="wrap_content"></ListView>
+
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/combustivelActivityAddButton"
@@ -19,4 +20,12 @@
         android:layout_alignParentRight="true"
         android:src="@drawable/add"/>
 
+    <Button
+        android:id="@+id/btnAddTelaDeCadastroCombustivel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Cadastrar Combustivel"
+        android:textSize="16dp"
+        android:background="@color/colorAccent"
+        android:textColorHint="@android:color/white"/>
 </RelativeLayout>
