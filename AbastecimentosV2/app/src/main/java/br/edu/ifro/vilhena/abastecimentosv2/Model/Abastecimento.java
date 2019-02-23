@@ -1,8 +1,9 @@
 package br.edu.ifro.vilhena.abastecimentosv2.Model;
 
-import java.sql.Date;
 
-public class Abastecimento {
+import java.io.Serializable;
+
+public class Abastecimento implements Serializable {
 
     private int id;
     private String nomePosto;
@@ -11,7 +12,7 @@ public class Abastecimento {
     private double valorLitro;
     private double quantLitros;
     private double total;
-    private Date data;
+    private String data;
 
     public int getId() {
         return id;
@@ -69,16 +70,16 @@ public class Abastecimento {
         this.total = total;
     }
 
-    public Date getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(String data) {
         this.data = data;
     }
 
     @Override
     public String toString() {
-        return nomePosto;
+        return nomePosto + " - " + data;
     }
 }
