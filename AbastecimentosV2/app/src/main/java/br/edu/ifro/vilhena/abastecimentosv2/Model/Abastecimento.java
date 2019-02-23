@@ -76,4 +76,9 @@ public class Abastecimento {
     public void setData(Date data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return nomePosto;
+    }
 }

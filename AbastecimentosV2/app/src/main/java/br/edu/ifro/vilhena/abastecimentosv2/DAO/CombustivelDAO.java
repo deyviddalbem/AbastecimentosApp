@@ -61,4 +61,12 @@ public class CombustivelDAO extends SQLiteOpenHelper {
         String sql = "delete from combustiveis";
         db.execSQL(sql);
     }
+
+    public void alterar(Combustivel combustivel) {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues dados = new ContentValues();
+        dados.put("tipo", combustivel.getTipo());
+        String[] parametros = {String.valueOf(combustivel.getId())};
+        db.update("combustiveis",dados, "id = ?", parametros);
+    }
 }

@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ListarCombustivelActivity">
+        </activity>
+        <activity android:name=".CombustivelActivity"></activity>
         <activity android:name=".ResumoActivity"></activity>
         <activity android:name=".AbastecimentoActivity" ></activity>
         <activity android:name=".ListarActivity">
@@ -18,6 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListarActivity"></activity>
     </application>
+
 </manifest>

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,12 +36,12 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues dados = new ContentValues();
         dados.put("nomePosto",abastecimento.getNomePosto());
-        dados.put("combustivel",abastecimento.getCombustivel().getTipo());
+        dados.put("combustivel",abastecimento.getCombustivel().getId());
         dados.put("quilometragem",abastecimento.getQuilometragem());
         dados.put("valorLitro",abastecimento.getValorLitro());
         dados.put("quantLitros",abastecimento.getQuantLitros());
         dados.put("total",abastecimento.getTotal());
-        //dados.put("data",abastecimento.getData());
+        dados.put("data", "12/12/2019");
         db.insert("abastecimentos",null,dados);
     }
 
@@ -56,14 +57,19 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
 
 
         while (c.moveToNext()) {
+            Combustivel combustivel = new Combustivel();
+
             Abastecimento abastecimento = new Abastecimento();
 
             abastecimento.setId(c.getInt(c.getColumnIndex("id")));
             abastecimento.setNomePosto(c.getString(c.getColumnIndex("nomePosto")));
-            abastecimento.setQuilometragem(c.getFloat(c.getColumnIndex("Quilometragem")));
+            abastecimento.setQuilometragem(c.getFloat(c.getColumnIndex("quilometragem")));
             abastecimento.setValorLitro(c.getFloat(c.getColumnIndex("valorLitro")));
             abastecimento.setQuantLitros(c.getFloat(c.getColumnIndex("quantLitros")));
             abastecimento.setTotal(c.getFloat(c.getColumnIndex("total")));
+            abastecimento.setData(Date.valueOf(c.getString(c.getColumnIndex("data"))));
+            combustivel.setId(c.getInt(c.getColumnIndex("tipocombustivel")));
+            abastecimento.setCombustivel(combustivel);
 
             listaAbastecimentos.add(abastecimento);
         }
