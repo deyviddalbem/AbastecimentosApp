@@ -50,19 +50,16 @@ public class ListarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListarActivity.this, AbastecimentoActivity.class);
-                startActivity(intent
-
-
-
-
-
-
-
-
-
-                );
+                startActivity(intent);
             }
         });
+
+        atualizarLista();
+
+
+        //TESTANDO
+
+
 
 
     }
@@ -86,13 +83,9 @@ public class ListarActivity extends AppCompatActivity {
     }
 
     public void atualizarLista(){
-
-       CombustivelDAO combustivelDAO = new CombustivelDAO(this);
-        List<Combustivel> abastecimentos = combustivelDAO.listarTodos();
-
-        ArrayAdapter<Combustivel> abastecimentosArrayAdapter = new ArrayAdapter<Combustivel>(this,android.R.layout.simple_list_item_1,abastecimentos);
-        listar.setAdapter(abastecimentosArrayAdapter);
-        Toast.makeText(this,"Chegou no final", Toast.LENGTH_LONG).show();
-
+        AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(this);
+        List<Abastecimento> abastecimentoList = abastecimentoDAO.listaAbastecimentos();
+        ArrayAdapter<Abastecimento> abastecimentoArrayAdapter = new ArrayAdapter<Abastecimento>(this, android.R.layout.simple_list_item_1,abastecimentoList);
+        listar.setAdapter(abastecimentoArrayAdapter);
     }
 }

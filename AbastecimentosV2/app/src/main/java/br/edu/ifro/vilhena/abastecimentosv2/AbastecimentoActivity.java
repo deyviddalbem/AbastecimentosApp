@@ -30,9 +30,8 @@ public class AbastecimentoActivity extends AppCompatActivity {
     private TextInputEditText quantidadeLitros;
     private TextInputEditText total;
     private TextInputEditText data;
-
-
     private ListView listarAbastecimento;
+    private List<Combustivel> tipoCombustivel;
 
 
     @Override
@@ -49,9 +48,12 @@ public class AbastecimentoActivity extends AppCompatActivity {
         btnSalvar = findViewById(R.id.abastecimentoBtnSalvar);
         spinner = findViewById(R.id.abastecimentoSpinner);
 
-        String[] combustiveis = {"Gasolina Comum", "Gasolina Aditivada", "Etanol"};
+        CombustivelDAO combustivelDAO = new CombustivelDAO(this);
+        tipoCombustivel = combustivelDAO.listarTodos();
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,combustiveis);
+        //String[] combustiveis = {"Gasolina Comum", "Gasolina Aditivada", "Etanol"};
+
+        ArrayAdapter<Combustivel> adapter = new ArrayAdapter<Combustivel>(this,R.layout.support_simple_spinner_dropdown_item,tipoCombustivel);
         spinner.setAdapter(adapter);
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {

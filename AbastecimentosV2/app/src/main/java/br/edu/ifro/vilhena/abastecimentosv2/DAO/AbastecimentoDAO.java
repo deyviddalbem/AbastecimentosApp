@@ -41,7 +41,7 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
         dados.put("valorLitro",abastecimento.getValorLitro());
         dados.put("quantLitros",abastecimento.getQuantLitros());
         dados.put("total",abastecimento.getTotal());
-        //dados.put("data", "12/12/2019");
+        dados.put("data", "12/12/2019");
         db.insert("abastecimentos",null,dados);
     }
 
@@ -67,7 +67,7 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
             abastecimento.setValorLitro(c.getFloat(c.getColumnIndex("valorLitro")));
             abastecimento.setQuantLitros(c.getFloat(c.getColumnIndex("quantLitros")));
             abastecimento.setTotal(c.getFloat(c.getColumnIndex("total")));
-            //abastecimento.setData(Date.valueOf(c.getString(c.getColumnIndex("data"))));
+            abastecimento.setData(Date.valueOf(c.getString(c.getColumnIndex("data"))));
             combustivel.setId(c.getInt(c.getColumnIndex("tipocombustivel")));
             abastecimento.setCombustivel(combustivel);
 
