@@ -74,7 +74,7 @@ public class CombustivelDAO extends SQLiteOpenHelper {
         Combustivel retorno = new Combustivel();
         SQLiteDatabase db = getReadableDatabase();
         String sql = "select * from combustiveis WHERE tipo = ?";
-        String[] parametros = {tipo};
+        String[] parametros = {"'" + tipo + "'"};
         Cursor c = db.rawQuery(sql,parametros);
         if(c.moveToFirst()){
             retorno.setId(c.getInt(c.getColumnIndex("id")));

@@ -25,6 +25,6 @@ public class Combustivel implements Serializable {
 
     @Override
     public String toString() {
-        return tipo;
+        return id + " - " + tipo;
     }
 }
