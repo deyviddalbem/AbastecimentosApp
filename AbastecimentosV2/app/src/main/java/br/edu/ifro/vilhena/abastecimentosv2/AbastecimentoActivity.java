@@ -111,16 +111,16 @@ public class AbastecimentoActivity extends AppCompatActivity {
                 combustivelRetornado = buscarID.retornarId(String.valueOf(spinner.getSelectedItem().toString()));
 
                 abastecimento.setCombustivel(combustivelRetornado);
-            Toast.makeText(AbastecimentoActivity.this, String.valueOf(abastecimento.getCombustivel().getId()),Toast.LENGTH_LONG).show();
+                //Toast.makeText(AbastecimentoActivity.this, String.valueOf(abastecimento.getCombustivel().getId()),Toast.LENGTH_LONG).show();
 
-/*                AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
+                AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
                 if (abastecimento.getId() != 0) {
                     abastecimentoDAO.alterar(abastecimento);
                 } else {
                     abastecimentoDAO.inserir(abastecimento);
                 }
                 abastecimentoDAO.close();
-                finish();*/
+                finish();
             }
         });
 

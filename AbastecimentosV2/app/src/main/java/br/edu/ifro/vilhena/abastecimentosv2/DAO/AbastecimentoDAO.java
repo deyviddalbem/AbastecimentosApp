@@ -82,15 +82,15 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
 
         ContentValues dados = new ContentValues();
         dados.put("nomePosto",abastecimento.getNomePosto());
-        dados.put("Combustivel",abastecimento.getCombustivel().getTipo());
+        dados.put("tipocombustivel",abastecimento.getCombustivel().getId());
         dados.put("quilometragem", abastecimento.getQuilometragem());
         dados.put("valorlitro",abastecimento.getValorLitro());
-        dados.put("quantLitro", abastecimento.getQuantLitros());
+        dados.put("quantLitros", abastecimento.getQuantLitros());
         dados.put("total",abastecimento.getTotal());
         dados.put("data",abastecimento.getData());
 
         String[] parametros = {String.valueOf(abastecimento.getId())};
-        db.update("contato", dados,"id=?", parametros);
+        db.update("abastecimentos", dados,"id = ?", parametros);
     }
 
 
