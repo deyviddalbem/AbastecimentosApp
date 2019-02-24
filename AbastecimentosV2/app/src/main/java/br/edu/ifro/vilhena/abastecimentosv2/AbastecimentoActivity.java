@@ -95,6 +95,8 @@ public class AbastecimentoActivity extends AppCompatActivity {
 
 
 
+
+
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +105,19 @@ public class AbastecimentoActivity extends AppCompatActivity {
                 abastecimento.setData(data.getText().toString());
                 abastecimento.setQuantLitros(Double.valueOf(quantidadeLitros.getText().toString()));
                 abastecimento.setQuilometragem(Float.valueOf(quilometragem.getText().toString()));
-                abastecimento.setTotal(Double.valueOf(total.getText().toString()));
+
+                //
+
+                Double total1= Double.parseDouble(quantidadeLitros.getText().toString());
+                Double total2= Double.parseDouble(valorLitro.getText().toString());
+                Double totalFinal = total1 * total2;
+                total.setText(String.valueOf(totalFinal));
+                Double totalPronto = Double.valueOf(total.getText().toString());
+
+
+                abastecimento.setTotal(Double.valueOf(totalPronto));
+
+                //
                 abastecimento.setValorLitro(Double.valueOf(valorLitro.getText().toString()));
 
                 CombustivelDAO buscarID = new CombustivelDAO(AbastecimentoActivity.this);
