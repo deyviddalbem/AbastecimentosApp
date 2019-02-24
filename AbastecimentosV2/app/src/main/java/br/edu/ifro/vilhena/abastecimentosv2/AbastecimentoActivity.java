@@ -51,7 +51,7 @@ public class AbastecimentoActivity extends AppCompatActivity {
         spinner = findViewById(R.id.abastecimentoSpinner);
 
 
-        CombustivelDAO combustivelDAO = new CombustivelDAO(this);
+        final CombustivelDAO combustivelDAO = new CombustivelDAO(this);
         tipoCombustivel = combustivelDAO.listarTodos();
         ArrayAdapter<Combustivel> adapter = new ArrayAdapter<Combustivel>(this, R.layout.support_simple_spinner_dropdown_item, tipoCombustivel);
         spinner.setAdapter(adapter);
@@ -73,6 +73,14 @@ public class AbastecimentoActivity extends AppCompatActivity {
             quantidadeLitros.setText(String.valueOf(abastecimento.getQuantLitros()));
             total.setText(String.valueOf(abastecimento.getTotal()));
             data.setText(abastecimento.getData());
+
+            CombustivelDAO buscarTipo = new CombustivelDAO(this);
+            Combustivel combustivelRetornado = buscarTipo.retornarTipo(abastecimento.getCombustivel().getId());
+
+
+            spinner.setSelection(adapter.getPosition(combustivelRetornado));
+
+
         }
 
 
@@ -88,10 +96,11 @@ public class AbastecimentoActivity extends AppCompatActivity {
                 abastecimento.setQuilometragem(Integer.valueOf(quilometragem.getText().toString()));
                 abastecimento.setTotal(666);
                 abastecimento.setValorLitro(Integer.valueOf(valorLitro.getText().toString()));
-                Combustivel combustivel = new Combustivel();
-                //combustivel.setTipo(spinner.getSelectedItem().toString());
-                combustivel.setId(1);
-                abastecimento.setCombustivel(combustivel);
+
+                CombustivelDAO buscarID = new CombustivelDAO(AbastecimentoActivity.this);
+                Combustivel combustivelRetornado = buscarID.retornarId(spinner.getSelectedItem().toString());
+
+                abastecimento.setCombustivel(combustivelRetornado);
 
                 AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
                 if (abastecimento.getId() != 0) {

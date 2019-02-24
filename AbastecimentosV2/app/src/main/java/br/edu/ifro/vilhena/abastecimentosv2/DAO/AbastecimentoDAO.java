@@ -107,4 +107,5 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
         String sql = "delete from abastecimentos";
         db.execSQL(sql);
     }
+
 }
