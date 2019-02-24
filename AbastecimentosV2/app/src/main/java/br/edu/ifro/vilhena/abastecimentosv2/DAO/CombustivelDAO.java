@@ -79,7 +79,9 @@ public class CombustivelDAO extends SQLiteOpenHelper {
         if(c.moveToFirst()){
             retorno.setId(c.getInt(c.getColumnIndex("id")));
             retorno.setTipo(c.getString(c.getColumnIndex("tipo")));
-        }
+        } else
+            retorno.setId(1000);
+            retorno.setTipo("Error");
         c.close();
         return retorno;
     }

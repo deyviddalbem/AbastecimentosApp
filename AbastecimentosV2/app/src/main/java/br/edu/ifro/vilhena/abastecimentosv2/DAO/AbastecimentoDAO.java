@@ -87,7 +87,7 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
         dados.put("valorlitro",abastecimento.getValorLitro());
         dados.put("quantLitro", abastecimento.getQuantLitros());
         dados.put("total",abastecimento.getTotal());
-        //dados.put("data",abastecimento.getData());
+        dados.put("data",abastecimento.getData());
 
         String[] parametros = {String.valueOf(abastecimento.getId())};
         db.update("contato", dados,"id=?", parametros);

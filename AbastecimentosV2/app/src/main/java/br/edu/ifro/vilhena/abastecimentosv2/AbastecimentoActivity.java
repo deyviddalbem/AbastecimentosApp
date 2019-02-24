@@ -53,7 +53,13 @@ public class AbastecimentoActivity extends AppCompatActivity {
 
         final CombustivelDAO combustivelDAO = new CombustivelDAO(this);
         tipoCombustivel = combustivelDAO.listarTodos();
-        ArrayAdapter<Combustivel> adapter = new ArrayAdapter<Combustivel>(this, R.layout.support_simple_spinner_dropdown_item, tipoCombustivel);
+
+        String[] tiposCombustiveis = new String[tipoCombustivel.size()];
+        for (int i = 0; i < tipoCombustivel.size(); i++){
+            tiposCombustiveis[i] = tipoCombustivel.get(i).getTipo();
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, tiposCombustiveis);
         spinner.setAdapter(adapter);
 
 
@@ -74,11 +80,14 @@ public class AbastecimentoActivity extends AppCompatActivity {
             total.setText(String.valueOf(abastecimento.getTotal()));
             data.setText(abastecimento.getData());
 
-            CombustivelDAO buscarTipo = new CombustivelDAO(this);
-            Combustivel combustivelRetornado = buscarTipo.retornarTipo(abastecimento.getCombustivel().getId());
 
 
-            spinner.setSelection(adapter.getPosition(combustivelRetornado));
+
+            if(abastecimento.getNomePosto() != null){
+                CombustivelDAO buscarTipo = new CombustivelDAO(this);
+                Combustivel combustivelRetornado = buscarTipo.retornarTipo(abastecimento.getCombustivel().getId());
+                spinner.setSelection(adapter.getPosition(combustivelRetornado.getTipo()));
+            }
 
 
         }
@@ -92,24 +101,26 @@ public class AbastecimentoActivity extends AppCompatActivity {
 
                 abastecimento.setNomePosto(nomePosto.getText().toString());
                 abastecimento.setData(data.getText().toString());
-                abastecimento.setQuantLitros(Integer.valueOf(quantidadeLitros.getText().toString()));
-                abastecimento.setQuilometragem(Integer.valueOf(quilometragem.getText().toString()));
-                abastecimento.setTotal(666);
-                abastecimento.setValorLitro(Integer.valueOf(valorLitro.getText().toString()));
+                abastecimento.setQuantLitros(Double.valueOf(quantidadeLitros.getText().toString()));
+                abastecimento.setQuilometragem(Float.valueOf(quilometragem.getText().toString()));
+                abastecimento.setTotal(Double.valueOf(total.getText().toString()));
+                abastecimento.setValorLitro(Double.valueOf(valorLitro.getText().toString()));
 
                 CombustivelDAO buscarID = new CombustivelDAO(AbastecimentoActivity.this);
-                Combustivel combustivelRetornado = buscarID.retornarId(spinner.getSelectedItem().toString());
+                Combustivel combustivelRetornado;
+                combustivelRetornado = buscarID.retornarId(spinner.getSelectedItem().toString());
 
-                abastecimento.setCombustivel(combustivelRetornado);
+                //abastecimento.setCombustivel(combustivelRetornado);
+            Toast.makeText(AbastecimentoActivity.this, (CharSequence) combustivelRetornado,Toast.LENGTH_LONG).show();
 
-                AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
+/*                AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
                 if (abastecimento.getId() != 0) {
                     abastecimentoDAO.alterar(abastecimento);
                 } else {
                     abastecimentoDAO.inserir(abastecimento);
                 }
                 abastecimentoDAO.close();
-                finish();
+                finish();*/
             }
         });
 
