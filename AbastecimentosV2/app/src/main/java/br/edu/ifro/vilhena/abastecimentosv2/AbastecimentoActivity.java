@@ -67,12 +67,12 @@ public class AbastecimentoActivity extends AppCompatActivity {
         }
 
         if (abastecimento != null) {
-/*            nomePosto.setText(abastecimento.getNomePosto());
+            nomePosto.setText(abastecimento.getNomePosto());
             quilometragem.setText(String.valueOf(abastecimento.getQuilometragem()));
             valorLitro.setText(String.valueOf(abastecimento.getValorLitro()));
             quantidadeLitros.setText(String.valueOf(abastecimento.getQuantLitros()));
             total.setText(String.valueOf(abastecimento.getTotal()));
-            data.setText(abastecimento.getData());*/
+            data.setText(abastecimento.getData());
         }
 
 
