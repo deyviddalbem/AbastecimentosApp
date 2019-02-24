@@ -69,4 +69,5 @@ public class CombustivelDAO extends SQLiteOpenHelper {
         String[] parametros = {String.valueOf(combustivel.getId())};
         db.update("combustiveis",dados, "id = ?", parametros);
     }
+
 }

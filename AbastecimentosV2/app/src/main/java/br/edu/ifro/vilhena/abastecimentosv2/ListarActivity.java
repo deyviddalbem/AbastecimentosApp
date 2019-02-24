@@ -63,7 +63,7 @@ public class ListarActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> lista, View item, int posicao, long id) {
                 Abastecimento abastecimento = (Abastecimento) listar.getItemAtPosition(posicao);
                 Intent intent = new Intent(ListarActivity.this, AbastecimentoActivity.class);
-                intent.putExtra("abastecimento", abastecimento);
+                intent.putExtra("abastecimentoSelecionado", abastecimento);
                 startActivity(intent);
             }
         });
@@ -94,5 +94,11 @@ public class ListarActivity extends AppCompatActivity {
         List<Abastecimento> abastecimentoList = abastecimentoDAO.listaAbastecimentos();
         ArrayAdapter<Abastecimento> abastecimentoArrayAdapter = new ArrayAdapter<Abastecimento>(this, android.R.layout.simple_list_item_1,abastecimentoList);
         listar.setAdapter(abastecimentoArrayAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        atualizarLista();
     }
 }

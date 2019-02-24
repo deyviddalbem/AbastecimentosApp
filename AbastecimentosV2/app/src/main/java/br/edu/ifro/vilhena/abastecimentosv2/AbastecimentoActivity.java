@@ -58,8 +58,8 @@ public class AbastecimentoActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        if (intent.hasExtra("abastecimento")) {
-            abastecimento = (Abastecimento) intent.getSerializableExtra("abastecimento");
+        if (intent.hasExtra("abastecimentoSelecionado")) {
+            abastecimento = (Abastecimento) intent.getSerializableExtra("abastecimentoSelecionado");
             btnSalvar.setText("ALTERAR");
         } else {
             abastecimento = new Abastecimento();
@@ -67,12 +67,12 @@ public class AbastecimentoActivity extends AppCompatActivity {
         }
 
         if (abastecimento != null) {
-            nomePosto.setText(abastecimento.getNomePosto());
+/*            nomePosto.setText(abastecimento.getNomePosto());
             quilometragem.setText(String.valueOf(abastecimento.getQuilometragem()));
             valorLitro.setText(String.valueOf(abastecimento.getValorLitro()));
             quantidadeLitros.setText(String.valueOf(abastecimento.getQuantLitros()));
             total.setText(String.valueOf(abastecimento.getTotal()));
-            data.setText(abastecimento.getData());
+            data.setText(abastecimento.getData());*/
         }
 
 
@@ -89,8 +89,8 @@ public class AbastecimentoActivity extends AppCompatActivity {
                 abastecimento.setTotal(666);
                 abastecimento.setValorLitro(Integer.valueOf(valorLitro.getText().toString()));
                 Combustivel combustivel = new Combustivel();
-                combustivel.setTipo("Água benta");
-                combustivel.setId(8);
+                //combustivel.setTipo(spinner.getSelectedItem().toString());
+                combustivel.setId(1);
                 abastecimento.setCombustivel(combustivel);
 
                 AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
