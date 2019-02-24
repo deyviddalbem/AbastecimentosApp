@@ -26,6 +26,8 @@ public class ListarActivity extends AppCompatActivity {
     private ListView listar;
     private FloatingActionButton btnAdd;
     private FloatingActionButton btnListarCombustiveis;
+    private FloatingActionButton btnChamarTelaResumo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class ListarActivity extends AppCompatActivity {
         listar = findViewById(R.id.listaAbastecimentos);
         btnAdd = findViewById(R.id.addAbastecimento);
         btnListarCombustiveis = findViewById(R.id.activityListarBtnListarCombustiveis);
+        btnChamarTelaResumo= findViewById(R.id.btnChamarActivityResumo);
 
 
         btnListarCombustiveis.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +53,14 @@ public class ListarActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ListarActivity.this, AbastecimentoActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnChamarTelaResumo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListarActivity.this,ResumoActivity.class);
                 startActivity(intent);
             }
         });

@@ -82,4 +82,5 @@ public class Abastecimento implements Serializable {
     public String toString() {
         return nomePosto + " - " + data;
     }
+
 }

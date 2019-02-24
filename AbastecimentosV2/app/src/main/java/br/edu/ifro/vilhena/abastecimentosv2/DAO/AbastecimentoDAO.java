@@ -108,4 +108,37 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
         db.execSQL(sql);
     }
 
+    public List<Abastecimento> listaGastos(){
+
+        SQLiteDatabase db = getReadableDatabase();
+
+        String sql = "select * from abastecimentos";
+
+        Cursor c = db.rawQuery(sql, null);
+
+        List<Abastecimento> listaAbastecimentos = new ArrayList<>();
+
+
+        while (c.moveToNext()) {
+            Combustivel combustivel = new Combustivel();
+
+            Abastecimento abastecimento = new Abastecimento();
+
+            abastecimento.setId(c.getInt(c.getColumnIndex("id")));
+            abastecimento.setNomePosto(c.getString(c.getColumnIndex("nomePosto")));
+            abastecimento.setQuilometragem(c.getFloat(c.getColumnIndex("quilometragem")));
+            abastecimento.setValorLitro(c.getFloat(c.getColumnIndex("valorLitro")));
+            abastecimento.setQuantLitros(c.getFloat(c.getColumnIndex("quantLitros")));
+            abastecimento.setTotal(c.getFloat(c.getColumnIndex("total")));
+            abastecimento.setData(c.getString(c.getColumnIndex("data")));
+            combustivel.setId(c.getInt(c.getColumnIndex("tipocombustivel")));
+            abastecimento.setCombustivel(combustivel);
+
+            listaAbastecimentos.add(abastecimento);
+        }
+        return listaAbastecimentos;
+
+    }
+
+
 }
