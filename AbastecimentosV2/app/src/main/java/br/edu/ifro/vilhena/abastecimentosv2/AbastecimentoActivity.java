@@ -1,5 +1,6 @@
 package br.edu.ifro.vilhena.abastecimentosv2;
 
+import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
+
 import android.widget.ListView;
 
 import java.util.List;
@@ -30,8 +32,8 @@ public class AbastecimentoActivity extends AppCompatActivity {
     private TextInputEditText quantidadeLitros;
     private TextInputEditText total;
     private TextInputEditText data;
-    private ListView listarAbastecimento;
     private List<Combustivel> tipoCombustivel;
+    private Abastecimento abastecimento;
 
 
     @Override
@@ -48,41 +50,80 @@ public class AbastecimentoActivity extends AppCompatActivity {
         btnSalvar = findViewById(R.id.abastecimentoBtnSalvar);
         spinner = findViewById(R.id.abastecimentoSpinner);
 
-        CombustivelDAO combustivelDAO = new CombustivelDAO(this);
+
+        final CombustivelDAO combustivelDAO = new CombustivelDAO(this);
         tipoCombustivel = combustivelDAO.listarTodos();
 
-        //String[] combustiveis = {"Gasolina Comum", "Gasolina Aditivada", "Etanol"};
+        String[] tiposCombustiveis = new String[tipoCombustivel.size()];
+        for (int i = 0; i < tipoCombustivel.size(); i++){
+            tiposCombustiveis[i] = tipoCombustivel.get(i).getTipo();
+        }
 
-        ArrayAdapter<Combustivel> adapter = new ArrayAdapter<Combustivel>(this,R.layout.support_simple_spinner_dropdown_item,tipoCombustivel);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item, tiposCombustiveis);
         spinner.setAdapter(adapter);
+
+
+        Intent intent = getIntent();
+        if (intent.hasExtra("abastecimentoSelecionado")) {
+            abastecimento = (Abastecimento) intent.getSerializableExtra("abastecimentoSelecionado");
+            btnSalvar.setText("ALTERAR");
+        } else {
+            abastecimento = new Abastecimento();
+            btnSalvar.setText("SALVAR");
+        }
+
+        if (abastecimento != null) {
+            nomePosto.setText(abastecimento.getNomePosto());
+            quilometragem.setText(String.valueOf(abastecimento.getQuilometragem()));
+            valorLitro.setText(String.valueOf(abastecimento.getValorLitro()));
+            quantidadeLitros.setText(String.valueOf(abastecimento.getQuantLitros()));
+            total.setText(String.valueOf(abastecimento.getTotal()));
+            data.setText(abastecimento.getData());
+
+
+
+
+            if(abastecimento.getNomePosto() != null){
+                CombustivelDAO buscarTipo = new CombustivelDAO(this);
+                Combustivel combustivelRetornado = buscarTipo.retornarTipo(abastecimento.getCombustivel().getId());
+                spinner.setSelection(adapter.getPosition(combustivelRetornado.getTipo()));
+            }
+
+
+        }
+
+
+
 
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(AbastecimentoActivity.this,"Teste",Toast.LENGTH_SHORT).show();
+
+                abastecimento.setNomePosto(nomePosto.getText().toString());
+                abastecimento.setData(data.getText().toString());
+                abastecimento.setQuantLitros(Double.valueOf(quantidadeLitros.getText().toString()));
+                abastecimento.setQuilometragem(Float.valueOf(quilometragem.getText().toString()));
+                abastecimento.setTotal(Double.valueOf(total.getText().toString()));
+                abastecimento.setValorLitro(Double.valueOf(valorLitro.getText().toString()));
+
+                CombustivelDAO buscarID = new CombustivelDAO(AbastecimentoActivity.this);
+                Combustivel combustivelRetornado;
+                combustivelRetornado = buscarID.retornarId(spinner.getSelectedItem().toString());
+
+                abastecimento.setCombustivel(combustivelRetornado);
+            Toast.makeText(AbastecimentoActivity.this, abastecimento.getCombustivel().getTipo(),Toast.LENGTH_LONG).show();
+
+/*                AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
+                if (abastecimento.getId() != 0) {
+                    abastecimentoDAO.alterar(abastecimento);
+                } else {
+                    abastecimentoDAO.inserir(abastecimento);
+                }
+                abastecimentoDAO.close();
+                finish();*/
             }
         });
 
-        listarAbastecimento = findViewById(R.id.listaAbastecimentos);
-
-
-        //AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
-        //Abastecimento abastecimento = new Abastecimento();
-        //abastecimento.setNomePosto("Posto Cidade");
-        //abastecimento.getCombustivel().setTipo("gasolina");
-        //abastecimento.setQuilometragem(5789);
-        //abastecimento.setQuantLitros(10);
-        //abastecimento.setValorLitro(2.50);
-        //abastecimento.setTotal(abastecimento.getQuantLitros() * abastecimento.getValorLitro());
-        //abastecimento.setData();
-        //abastecimentoDAO.inserir(abastecimento);
-        //abastecimentoDAO.close();
-
-
-
-        //List<Abastecimento> abastecimentoLista = abastecimentoDAO.listaAbastecimentos();
-        //ArrayAdapter<Abastecimento> combustivelArrayAdapter = new ArrayAdapter<Abastecimento>(this,android.R.layout.simple_list_item_1,abastecimentoLista);
-        //listarAbastecimento.setAdapter(combustivelArrayAdapter);
 
     }
 

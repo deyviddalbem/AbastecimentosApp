@@ -69,4 +69,35 @@ public class CombustivelDAO extends SQLiteOpenHelper {
         String[] parametros = {String.valueOf(combustivel.getId())};
         db.update("combustiveis",dados, "id = ?", parametros);
     }
+
+    public Combustivel retornarId(String tipo){
+        Combustivel retorno = new Combustivel();
+        SQLiteDatabase db = getReadableDatabase();
+        String sql = "select * from combustiveis WHERE tipo = ?";
+        String[] parametros = {"'" + tipo + "'"};
+        Cursor c = db.rawQuery(sql,parametros);
+        if(c.moveToFirst()){
+            retorno.setId(c.getInt(c.getColumnIndex("id")));
+            retorno.setTipo(c.getString(c.getColumnIndex("tipo")));
+        } else
+            retorno.setId(1000);
+            retorno.setTipo("Error");
+        c.close();
+        return retorno;
+    }
+
+    public Combustivel retornarTipo(int id){
+        Combustivel retorno = new Combustivel();
+        SQLiteDatabase db = getReadableDatabase();
+        String sql = "select * from combustiveis WHERE id = ?";
+        String[] parametros = {String.valueOf(id)};
+        Cursor c = db.rawQuery(sql,parametros);
+        if(c.moveToFirst()){
+            retorno.setId(c.getInt(c.getColumnIndex("id")));
+            retorno.setTipo(c.getString(c.getColumnIndex("tipo")));
+        }
+        c.close();
+        return retorno;
+    }
+
 }
