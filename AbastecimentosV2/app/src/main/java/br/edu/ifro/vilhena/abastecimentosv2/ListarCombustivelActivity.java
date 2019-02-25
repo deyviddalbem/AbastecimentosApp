@@ -26,6 +26,7 @@ public class ListarCombustivelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_combustivel);
+        setTitle("Combustiveis cadastrados");
 
         listaCombustiveis = findViewById(R.id.listViewCombustiveis);
         btnAdd = findViewById(R.id.combustivelActivityAddButton);

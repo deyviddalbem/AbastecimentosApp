@@ -40,6 +40,7 @@ public class AbastecimentoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_abastecimento);
+        setTitle("Cadastro de Abastecimentos ");
 
         nomePosto = findViewById(R.id.abastecimentoNomePosto);
         quilometragem = findViewById(R.id.abastecimentoQuilometragem);
@@ -67,6 +68,7 @@ public class AbastecimentoActivity extends AppCompatActivity {
         if (intent.hasExtra("abastecimentoSelecionado")) {
             abastecimento = (Abastecimento) intent.getSerializableExtra("abastecimentoSelecionado");
             btnSalvar.setText("ALTERAR");
+            setTitle("Atualize aqui seus Abastecimentos");
         } else {
             abastecimento = new Abastecimento();
             btnSalvar.setText("SALVAR");

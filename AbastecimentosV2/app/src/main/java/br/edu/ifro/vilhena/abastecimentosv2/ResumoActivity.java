@@ -18,12 +18,13 @@ public class ResumoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumo);
+        setTitle("Relatorio de abastecimentos");
 
         listarGastos = findViewById(R.id.listaDeGastos);
 
+
         AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(this);
         List<Abastecimento> abastecimentoList = abastecimentoDAO.listaAbastecimentos();
-
         ArrayAdapter<Abastecimento> abastecimentoArrayAdapter = new ArrayAdapter<Abastecimento>(this, android.R.layout.simple_expandable_list_item_1,abastecimentoList);
         listarGastos.setAdapter(abastecimentoArrayAdapter);
 

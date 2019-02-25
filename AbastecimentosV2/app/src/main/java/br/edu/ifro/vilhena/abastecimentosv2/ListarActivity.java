@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -27,27 +28,46 @@ public class ListarActivity extends AppCompatActivity {
     private FloatingActionButton btnAdd;
     private FloatingActionButton btnListarCombustiveis;
     private FloatingActionButton btnChamarTelaResumo;
+    private Button btnchamarRelatorio;
+    private Button btnchamarCombustiveis;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar);
+        setTitle("Abastecimentos Feitos");
 
 
         listar = findViewById(R.id.listaAbastecimentos);
         btnAdd = findViewById(R.id.addAbastecimento);
-        btnListarCombustiveis = findViewById(R.id.activityListarBtnListarCombustiveis);
-        btnChamarTelaResumo= findViewById(R.id.btnChamarActivityResumo);
+        //btnListarCombustiveis = findViewById(R.id.activityListarBtnListarCombustiveis);
+        //btnChamarTelaResumo= findViewById(R.id.btnChamarActivityResumo);
+        btnchamarRelatorio = findViewById(R.id.btnChamarRelatorio);
+        btnchamarCombustiveis = findViewById(R.id.btnChamarActivityCombustiveis);
 
-
-        btnListarCombustiveis.setOnClickListener(new View.OnClickListener() {
+        btnchamarCombustiveis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListarActivity.this,ListarCombustivelActivity.class);
+                Intent intent = new Intent(ListarActivity.this, ListarCombustivelActivity.class);
                 startActivity(intent);
             }
         });
+
+        btnchamarRelatorio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListarActivity.this,ResumoActivity.class);
+                startActivity(intent);
+            }
+        });
+        //btnListarCombustiveis.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View v) {
+              //  Intent intent = new Intent(ListarActivity.this,ListarCombustivelActivity.class);
+                //startActivity(intent);
+            //}
+        //});
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,13 +77,13 @@ public class ListarActivity extends AppCompatActivity {
             }
         });
 
-        btnChamarTelaResumo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ListarActivity.this,ResumoActivity.class);
-                startActivity(intent);
-            }
-        });
+        //btnChamarTelaResumo.setOnClickListener(new View.OnClickListener() {
+          //  @Override
+            //public void onClick(View v) {
+              //  Intent intent = new Intent(ListarActivity.this,ResumoActivity.class);
+                //startActivity(intent);
+            //}
+        //});
 
         atualizarLista();
 

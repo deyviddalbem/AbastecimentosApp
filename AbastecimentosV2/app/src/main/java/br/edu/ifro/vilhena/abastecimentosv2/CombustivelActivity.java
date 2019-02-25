@@ -23,6 +23,7 @@ public class CombustivelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_combustivel);
+        setTitle("Cadastrar Combustiveis");
 
         btnSalvar = findViewById(R.id.combustivelActivityBtnSalvar);
         txtTipoCombustivel = findViewById(R.id.combustivelActivityTipo);
@@ -31,6 +32,7 @@ public class CombustivelActivity extends AppCompatActivity {
         if(((Intent) intent).hasExtra("combustivel")){
             combustivel = (Combustivel) intent.getSerializableExtra("combustivel");
             btnSalvar.setText("ALTERAR");
+            setTitle("atualizar combustiveis");
         } else{
             combustivel = new Combustivel();
             btnSalvar.setText("SALVAR");
