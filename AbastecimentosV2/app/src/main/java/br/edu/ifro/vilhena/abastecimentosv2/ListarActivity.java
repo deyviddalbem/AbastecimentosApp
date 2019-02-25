@@ -41,8 +41,10 @@ public class ListarActivity extends AppCompatActivity {
 
         listar = findViewById(R.id.listaAbastecimentos);
         btnAdd = findViewById(R.id.addAbastecimento);
+
         //btnListarCombustiveis = findViewById(R.id.activityListarBtnListarCombustiveis);
         //btnChamarTelaResumo= findViewById(R.id.btnChamarActivityResumo);
+
         btnchamarRelatorio = findViewById(R.id.btnChamarRelatorio);
         btnchamarCombustiveis = findViewById(R.id.btnChamarActivityCombustiveis);
 

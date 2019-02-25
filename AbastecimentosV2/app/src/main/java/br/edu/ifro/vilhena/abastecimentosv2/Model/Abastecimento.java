@@ -78,9 +78,10 @@ public class Abastecimento implements Serializable {
         this.data = data;
     }
 
+
     @Override
     public String toString() {
-        return nomePosto + " - " + data;
+        return nomePosto + " - " + data+ "\n" + "Valor Total: R$ "+ total ;
     }
 
 
