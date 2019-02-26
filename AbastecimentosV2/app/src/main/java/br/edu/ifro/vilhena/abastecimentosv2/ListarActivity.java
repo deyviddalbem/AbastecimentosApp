@@ -125,6 +125,29 @@ public class ListarActivity extends AppCompatActivity {
     public void atualizarLista(){
         AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(this);
         List<Abastecimento> abastecimentoList = abastecimentoDAO.listaAbastecimentos();
+
+
+        for(int i = 0; i < abastecimentoList.size(); i++){
+
+
+            Double valorLitro = abastecimentoList.get(i).getValorLitro();
+            String litroFormatado = String.format("%.2f", valorLitro);
+            Double litroFinal = Double.parseDouble(litroFormatado);
+            abastecimentoList.get(i).setValorLitro(litroFinal);
+
+
+            Double quantLitros = abastecimentoList.get(i).getQuantLitros();
+            String quantFormatado = String.format("%.2f", quantLitros);
+            Double quantFinal = Double.parseDouble(quantFormatado);
+            abastecimentoList.get(i).setQuantLitros(quantFinal);
+
+
+            Double total = abastecimentoList.get(i).getTotal();
+            String totalFormatado = String.format("%.2f", total);
+            Double totalFinal = Double.parseDouble(totalFormatado);
+            abastecimentoList.get(i).setTotal(totalFinal);
+        }
+
         ArrayAdapter<Abastecimento> abastecimentoArrayAdapter = new ArrayAdapter<Abastecimento>(this, android.R.layout.simple_list_item_1,abastecimentoList);
         listar.setAdapter(abastecimentoArrayAdapter);
     }

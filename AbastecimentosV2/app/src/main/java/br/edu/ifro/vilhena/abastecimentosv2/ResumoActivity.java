@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
@@ -22,16 +23,11 @@ import br.edu.ifro.vilhena.abastecimentosv2.Model.Abastecimento;
 import br.edu.ifro.vilhena.abastecimentosv2.Model.Combustivel;
 
 public class ResumoActivity extends AppCompatActivity {
+    private TextView txtGastoTotal;
+    private TextView txtKmTotal;
+    private TextView txtCombustivelTotal;
 
-      private ListView listarGastos;
-    private TextInputEditText nomePosto;
-    private TextInputEditText quilometragem;
-    private TextInputEditText valorLitro;
-    private TextInputEditText quantidadeLitros;
-    private TextInputEditText total;
-    private TextInputEditText data;
-    private List<Combustivel> tipoCombustivel;
-    private Abastecimento abastecimento;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,28 +35,24 @@ public class ResumoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_resumo);
         setTitle("Relatorio de abastecimentos");
 
-
-        nomePosto = findViewById(R.id.abastecimentoNomePosto);
-        quilometragem = findViewById(R.id.abastecimentoQuilometragem);
-        valorLitro = findViewById(R.id.abastecimentoValorLitro);
-        quantidadeLitros = findViewById(R.id.abastecimentoQuantLitros);
-        total = findViewById(R.id.abastecimentoTotal);
-        data = findViewById(R.id.abastecimentoData);
-
-        listarGastos = findViewById(R.id.listaDeGastos);
-
+        txtCombustivelTotal = findViewById(R.id.activityResumoTotalCombustivel);
+        txtGastoTotal = findViewById(R.id.activityResumoTotalGasto);
+        txtKmTotal = findViewById(R.id.activityResumoTotalKm);
 
         AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(this);
-        List<Abastecimento> abastecimentoList = abastecimentoDAO.listaAbastecimentos();
-        ArrayAdapter<Abastecimento> abastecimentoArrayAdapter = new ArrayAdapter<Abastecimento>(this, android.R.layout.simple_expandable_list_item_1,abastecimentoList);
-        listarGastos.setAdapter(abastecimentoArrayAdapter);
+        String vTotal = abastecimentoDAO.gastoTotal().toString();
+        vTotal = String.format("%.2f", Double.parseDouble(vTotal));
+        txtGastoTotal.setText("R$ " + vTotal);
 
-        registerForContextMenu(listarGastos);
+
+        String combTotal = abastecimentoDAO.gastoCombustivel().toString();
+        combTotal = String.format("%.2f", Double.parseDouble(combTotal));
+        txtCombustivelTotal.setText(combTotal + " L");
+
+        String kmTotal = abastecimentoDAO.gastoKm().toString();
+        kmTotal = String.format("%.2f", Double.parseDouble(kmTotal));
+        txtKmTotal.setText(kmTotal + " Km");
+
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        MenuItem menuDeletar = menu.add("Deletar");
-
-    }
 }
