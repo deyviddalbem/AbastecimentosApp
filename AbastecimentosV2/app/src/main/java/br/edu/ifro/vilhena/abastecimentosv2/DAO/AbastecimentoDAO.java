@@ -21,8 +21,8 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table abastecimentos (id integer primary key, nomePosto text, tipocombustivel integer, " +
-                "quilometragem real, valorLitro real, quantLitros real, total real, data text)";
+        String sql = "create table abastecimentos (id integer primary key, nomePosto text, " +
+                "quilometragem real, valorLitro real, quantLitros real, total real, data text, tipocombustivel integer,FOREIGN KEY(tipocombustivel) REFERENCES combustiveis(id))";
         db.execSQL(sql);
     }
 
