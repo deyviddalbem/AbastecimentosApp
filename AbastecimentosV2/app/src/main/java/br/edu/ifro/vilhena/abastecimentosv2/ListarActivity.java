@@ -17,6 +17,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import br.edu.ifro.vilhena.abastecimentosv2.DAO.AbastecimentoDAO;
 import br.edu.ifro.vilhena.abastecimentosv2.DAO.CombustivelDAO;
@@ -125,6 +126,7 @@ public class ListarActivity extends AppCompatActivity {
     public void atualizarLista(){
         AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(this);
         List<Abastecimento> abastecimentoList = abastecimentoDAO.listaAbastecimentos();
+
 
 
         for(int i = 0; i < abastecimentoList.size(); i++){

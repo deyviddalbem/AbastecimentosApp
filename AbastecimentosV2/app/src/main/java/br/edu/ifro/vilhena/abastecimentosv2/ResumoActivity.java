@@ -28,7 +28,6 @@ public class ResumoActivity extends AppCompatActivity {
     private TextView txtCombustivelTotal;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,18 +39,40 @@ public class ResumoActivity extends AppCompatActivity {
         txtKmTotal = findViewById(R.id.activityResumoTotalKm);
 
         AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(this);
-        String vTotal = abastecimentoDAO.gastoTotal().toString();
-        vTotal = String.format("%.2f", Double.parseDouble(vTotal));
-        txtGastoTotal.setText("R$ " + vTotal);
+        String vTotal;
+        try {
+            vTotal = abastecimentoDAO.gastoTotal().toString();
+            vTotal = String.format("%.2f", Double.parseDouble(vTotal));
+            txtGastoTotal.setText("R$ " + vTotal);
+        } catch (NullPointerException e) {
+            txtGastoTotal.setText("Não há dados");
+        }catch (Exception e ) {
+            txtGastoTotal.setText("Ocorreu um erro");
+        }
 
 
-        String combTotal = abastecimentoDAO.gastoCombustivel().toString();
-        combTotal = String.format("%.2f", Double.parseDouble(combTotal));
-        txtCombustivelTotal.setText(combTotal + " L");
+        String combTotal;
+        try {
+            combTotal = abastecimentoDAO.gastoCombustivel().toString();
+            combTotal = String.format("%.2f", Double.parseDouble(combTotal));
+            txtCombustivelTotal.setText(combTotal + " L");
+        } catch (NullPointerException e) {
+            txtCombustivelTotal.setText("Não há dados");
+        } catch (Exception e ) {
+            txtCombustivelTotal.setText("Ocorreu um erro");
+        }
 
-        String kmTotal = abastecimentoDAO.gastoKm().toString();
-        kmTotal = String.format("%.2f", Double.parseDouble(kmTotal));
-        txtKmTotal.setText(kmTotal + " Km");
+
+        String kmTotal;
+        try {
+            kmTotal = abastecimentoDAO.gastoKm().toString();
+            kmTotal = String.format("%.2f", Double.parseDouble(kmTotal));
+            txtKmTotal.setText(kmTotal + " Km");
+        } catch (NullPointerException e) {
+            txtKmTotal.setText("Não há dados");
+        } catch (Exception e ){
+            txtKmTotal.setText("Ocorreu um erro");
+        }
 
     }
 
