@@ -156,4 +156,12 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
         return c.getString(0);
     }
 
+    public String gastoKm(){
+        SQLiteDatabase db  = getReadableDatabase();
+        String sql = "select max(quilometragem) - min(quilometragem) from abastecimentos";
+        Cursor c = db.rawQuery(sql, null);
+        c.moveToFirst();
+        return c.getString(0);
+    }
+
 }

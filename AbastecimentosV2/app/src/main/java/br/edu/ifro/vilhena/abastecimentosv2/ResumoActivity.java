@@ -47,7 +47,11 @@ public class ResumoActivity extends AppCompatActivity {
 
         String combTotal = abastecimentoDAO.gastoCombustivel().toString();
         combTotal = String.format("%.2f", Double.parseDouble(combTotal));
-        txtCombustivelTotal.setText(combTotal);
+        txtCombustivelTotal.setText(combTotal + " L");
+
+        String kmTotal = abastecimentoDAO.gastoKm().toString();
+        kmTotal = String.format("%.2f", Double.parseDouble(kmTotal));
+        txtKmTotal.setText(kmTotal + " Km");
 
     }
 
