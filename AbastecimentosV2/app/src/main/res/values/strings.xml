@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Abastecimentos</string>
+    <string name="tipo_combustivel">Tipo de combustível</string>
+    <string name="nome_posto">Nome do posto</string>
+    <string name="quilometragem">Quilometragem atual</string>
+    <string name="valor_litro">Valor do litro</string>
+    <string name="quantidade_litros">Quantidade de litros</string>
+    <string name="total">Total</string>
+    <string name="data">Data</string>
+    <string name="btn_salvar_txt">SALVAR</string>
 </resources>
