@@ -79,7 +79,7 @@
         android:layout_margin="16dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:src="@drawable/mais"/>
+        android:src="@drawable/menos"/>
   <!--
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/addAbastecimento"

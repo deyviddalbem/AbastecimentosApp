@@ -76,6 +76,7 @@ public class ListarActivity extends AppCompatActivity {
                 fab1.animate().translationY(-getResources().getDimension(R.dimen.standard_55));
                 fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
                 fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
+                fab.setImageResource(R.drawable.mais2);
             }
 
             private void closeFABMenu(){
@@ -83,6 +84,7 @@ public class ListarActivity extends AppCompatActivity {
                 fab1.animate().translationY(0);
                 fab2.animate().translationY(0);
                 fab3.animate().translationY(0);
+                fab.setImageResource(R.drawable.menos);
             }
         });
 
