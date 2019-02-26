@@ -18,17 +18,19 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nome do Posto">
+        android:hint="@string/nome_posto">
+
         <android.support.design.widget.TextInputEditText
             android:id="@+id/abastecimentoNomePosto"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Quilometragem">
+        android:hint="@string/quilometragem">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/abastecimentoQuilometragem"
             android:layout_width="match_parent"
@@ -39,7 +41,7 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Valor do litro">
+        android:hint="@string/valor_litro">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/abastecimentoValorLitro"
             android:layout_width="match_parent"
@@ -50,7 +52,7 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Quantidade de litros">
+        android:hint="@string/quantidade_litros">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/abastecimentoQuantLitros"
             android:layout_width="match_parent"
@@ -61,30 +63,32 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Total">
+        android:hint="@string/total">
         <android.support.design.widget.TextInputEditText
             android:id="@+id/abastecimentoTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"/>
+            android:inputType="numberDecimal"
+            android:enabled="false"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Data">
+        android:hint="@string/data">
+
         <android.support.design.widget.TextInputEditText
             android:id="@+id/abastecimentoData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="date"
-            android:maxLength="10"/>
+            android:inputType="date|datetime"
+            android:maxLength="10" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/abastecimentoBtnSalvar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SALVAR"/>
+        android:text="@string/btn_salvar_txt"/>
 
 </LinearLayout>

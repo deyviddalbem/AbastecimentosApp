@@ -54,6 +54,7 @@ public class AbastecimentoActivity extends AppCompatActivity {
 
         final CombustivelDAO combustivelDAO = new CombustivelDAO(this);
         tipoCombustivel = combustivelDAO.listarTodos();
+        combustivelDAO.close();
 
         String[] tiposCombustiveis = new String[tipoCombustivel.size()];
         for (int i = 0; i < tipoCombustivel.size(); i++){
@@ -132,10 +133,11 @@ public class AbastecimentoActivity extends AppCompatActivity {
                 AbastecimentoDAO abastecimentoDAO = new AbastecimentoDAO(AbastecimentoActivity.this);
                 if (abastecimento.getId() != 0) {
                     abastecimentoDAO.alterar(abastecimento);
+                    abastecimentoDAO.close();
                 } else {
                     abastecimentoDAO.inserir(abastecimento);
+                    abastecimentoDAO.close();
                 }
-                abastecimentoDAO.close();
                 finish();
             }
         });

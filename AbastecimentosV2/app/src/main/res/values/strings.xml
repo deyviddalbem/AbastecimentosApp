@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">AbastecimentosV2</string>
+    <string name="app_name">Abastecimentos</string>
+    <string name="tipo_combustivel">Tipo de combustível</string>
+    <string name="nome_posto">Nome do posto</string>
+    <string name="quilometragem">Quilometragem atual</string>
+    <string name="valor_litro">Valor do litro</string>
+    <string name="quantidade_litros">Quantidade de litros</string>
+    <string name="total">Total</string>
+    <string name="data">Data</string>
+    <string name="btn_salvar_txt">SALVAR</string>
+    <string name="resumo_total_quilometros">Total de Quilômetros</string>
+    <string name="resumo_total_litros">Total de Combustível</string>
+    <string name="resumo_total_dinheiro">Gasto Total</string>
+    <string name="resumo_ph_km">132 Km</string>
+    <string name="resumo_ph_l">18 L</string>
+    <string name="resumo_ph_d">R$ 1.236,50</string>
+    <string name="description_img_km">img_km</string>
+    <string name="description_img_l">img_l</string>
+    <string name="description_img_d">img_d</string>
 </resources>

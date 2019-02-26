@@ -9,18 +9,19 @@
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Tipo de combustível">
+        android:hint="@string/tipo_combustivel">
+
         <android.support.design.widget.TextInputEditText
             android:id="@+id/combustivelActivityTipo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            />
+            android:inputType="textCapWords" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/combustivelActivityBtnSalvar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="SALVAR"/>
+        android:text="@string/btn_salvar_txt"/>
 
 </LinearLayout>
