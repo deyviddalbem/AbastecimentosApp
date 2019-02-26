@@ -10,18 +10,19 @@
         android:layout_height="100dp"
         android:src="@drawable/speedometer"
         android:layout_margin="20dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/description_img_km"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total de Quilômetros"
+        android:text="@string/resumo_total_quilometros"
         android:layout_gravity="center_horizontal"/>
     <TextView
         android:id="@+id/activityResumoTotalKm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3564.6"
+        android:text="@string/resumo_ph_km"
         android:layout_gravity="center_horizontal"/>
 
 
@@ -31,18 +32,19 @@
         android:layout_height="100dp"
         android:src="@drawable/gas"
         android:layout_margin="20dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/description_img_l"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Total de combustível"
+        android:text="@string/resumo_total_litros"
         android:layout_gravity="center_horizontal"/>
     <TextView
         android:id="@+id/activityResumoTotalCombustivel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3564.6"
+        android:text="@string/resumo_ph_l"
         android:layout_gravity="center_horizontal"/>
 
 
@@ -51,18 +53,19 @@
         android:layout_height="100dp"
         android:src="@drawable/coin1"
         android:layout_margin="20dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/description_img_d"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Gasto Total"
+        android:text="@string/resumo_total_dinheiro"
         android:layout_gravity="center_horizontal"/>
     <TextView
         android:id="@+id/activityResumoTotalGasto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="R$ 1.256,39"
+        android:text="@string/resumo_ph_d"
         android:layout_gravity="center_horizontal"/>
 
 
