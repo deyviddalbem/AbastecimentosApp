@@ -4,9 +4,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/combustivel"
+        android:icon="@drawable/gas2"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/combustivel"
+        android:roundIcon="@drawable/gas2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ListarCombustivelActivity">
