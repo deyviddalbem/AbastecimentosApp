@@ -49,7 +49,7 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getReadableDatabase();
 
-        String sql = "select * from abastecimentos";
+        String sql = "select * from abastecimentos ORDER BY data DESC";
 
         Cursor c = db.rawQuery(sql, null);
 
@@ -138,6 +138,22 @@ public class AbastecimentoDAO extends SQLiteOpenHelper {
         }
         return listaAbastecimentos;
 
+    }
+
+    public String gastoTotal(){
+        SQLiteDatabase db  = getReadableDatabase();
+        String sql = "select sum(total) from abastecimentos";
+        Cursor c = db.rawQuery(sql, null);
+        c.moveToFirst();
+        return c.getString(0);
+    }
+
+    public String gastoCombustivel(){
+        SQLiteDatabase db  = getReadableDatabase();
+        String sql = "select sum(quantLitros) from abastecimentos";
+        Cursor c = db.rawQuery(sql, null);
+        c.moveToFirst();
+        return c.getString(0);
     }
 
 }
