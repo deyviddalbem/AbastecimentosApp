@@ -15,7 +15,9 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 import br.edu.ifro.vilhena.abastecimentosv2.DAO.AbastecimentoDAO;
 import br.edu.ifro.vilhena.abastecimentosv2.DAO.CombustivelDAO;
@@ -26,6 +28,7 @@ public class ResumoActivity extends AppCompatActivity {
     private TextView txtGastoTotal;
     private TextView txtKmTotal;
     private TextView txtCombustivelTotal;
+    NumberFormat numberFormat = NumberFormat.getCurrencyInstance(new Locale("pt","BR"));
 
 
     @Override
@@ -44,10 +47,10 @@ public class ResumoActivity extends AppCompatActivity {
             vTotal = abastecimentoDAO.gastoTotal().toString();
             vTotal = String.format("%.2f", Double.parseDouble(vTotal));
             txtGastoTotal.setText("R$ " + vTotal);
+
+            txtGastoTotal.setText(numberFormat.format(Double.parseDouble(vTotal)));
         } catch (NullPointerException e) {
             txtGastoTotal.setText("Não há dados");
-        }catch (Exception e ) {
-            txtGastoTotal.setText("Ocorreu um erro");
         }
 
 
